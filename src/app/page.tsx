@@ -17,6 +17,8 @@ const QUESTIONS = [
       { value: "failure", label: "失敗して笑われること" },
       { value: "rejection", label: "本当の自分を出して拒絶されること" },
       { value: "trust", label: "誰かを信じて裏切られること" },
+      { value: "worthless", label: "誰の役にも立てず、無価値だと思われること" },
+      { value: "abandoned", label: "大切な人に置いていかれ、孤独になること" }
     ]
   },
   {
@@ -28,6 +30,8 @@ const QUESTIONS = [
       { value: "perfection", label: "完璧なふりをして隙を見せない" },
       { value: "cynical", label: "冷めたふりをして何にも期待しない" },
       { value: "clown", label: "道化を演じて本音をごまかす" },
+      { value: "devoted", label: "自分の欲求を抑え込み、ひたすら他人に尽くす" },
+      { value: "aggressive", label: "傷つけられる前に、攻撃的な態度で威嚇する" }
     ]
   },
   {
@@ -35,26 +39,12 @@ const QUESTIONS = [
     text: "今の気持ちを表す「キーワード」を一つ教えてください。",
     type: "text",
     placeholder: "例：空虚、焦り、透明人間、仮面"
-  },
-  {
-    id: "treasure",
-    text: "子供の頃、誰にも言えずに大切にしていた「宝物（夢や秘密）」は何でしたか？",
-    type: "text",
-    placeholder: "例：魔法使いになること、裏庭の秘密基地、本当は優しいお父さん"
-  },
-  {
-    id: "words",
-    text: "あなたが今、誰かに一番言ってほしい「言葉」は何ですか？",
-    type: "text",
-    placeholder: "例：もう頑張らなくていいよ、君はそのままで素晴らしい"
   }
 ];
 
 const generateProceduralStory = (answers: Record<string, string>): StoryData => {
   const fear = answers["fear"] || "failure";
   const keyword = answers["keyword"] || "不安";
-  const treasure = answers["treasure"] || "自分だけの小さな光";
-  const words = answers["words"] || "もう大丈夫だよ";
 
   const base = BASE_STORIES[fear] || BASE_STORIES["failure"];
   
@@ -66,11 +56,11 @@ const generateProceduralStory = (answers: Record<string, string>): StoryData => 
   // キーワードの置換
   const finalEnding = endingTemplate.replace(/{keyword}/g, keyword);
 
-  // あらすじの合成（Q4: 宝物を組み込む）
-  const synopsis = `${base.synopsis_intro}\n主人公はいつも、心の奥底に『${treasure}』を隠して守っていた。絶対に奪われないように、見つからないように。\n\n空虚な日々の中、主人公はある日、奇妙な存在に出会う。\n${guide.desc}\n${guide.text}\nさらに、その手には「${item}」が握られていた。`;
+  // あらすじの合成
+  const synopsis = `${base.synopsis_intro}\n空虚な日々の中、主人公はある日、奇妙な存在に出会う。\n${guide.desc}\n${guide.text}\nさらに、その手には「${item}」が握られていた。`;
 
-  // クライマックスの合成（Q5: 言葉を組み込む）
-  const climax = `${base.climax_intro}\n\n目の前には、かつて恐れていたはずの【${base.shadowCharacter.name}】が立ち塞がる。\nしかし、不思議な導き手である【${guide.name}】がくれた「${item}」が、主人公に小さな勇気を与えた。\n導き手は主人公を見つめ、静かにこう告げた。「${words}」――その言葉は、主人公がずっと自分自身から隠していた、一番欲しかった言葉だった。`;
+  // クライマックスの合成
+  const climax = `${base.climax_intro}\n\n目の前には、かつて恐れていたはずの【${base.shadowCharacter.name}】が立ち塞がる。\nしかし、不思議な導き手である【${guide.name}】がくれた「${item}」が、主人公に小さな勇気を与えた。\n主人公は自らの影と向き合い、ずっと心の奥底に隠していた本音を叫ぶ。`;
 
   return {
     title: base.title,
