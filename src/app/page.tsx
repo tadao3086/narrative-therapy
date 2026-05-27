@@ -110,6 +110,12 @@ export default function Home() {
     }
   };
 
+  const handlePrevQuestion = () => {
+    if (currentQuestionIdx > 0) {
+      setCurrentQuestionIdx(prev => prev - 1);
+    }
+  };
+
   const generateStory = () => {
     setAppState("loading");
     setTimeout(() => {
@@ -183,6 +189,16 @@ export default function Home() {
             )}
 
             <div className={styles.actionRow}>
+              <div className={styles.secondaryActionGroup}>
+                <button className={styles.topButton} onClick={handleReset}>
+                  TOPへ戻る
+                </button>
+                {currentQuestionIdx > 0 && (
+                  <button className={styles.backButton} onClick={handlePrevQuestion}>
+                    戻る
+                  </button>
+                )}
+              </div>
               <button 
                 className={styles.nextButton}
                 onClick={handleNextQuestion}
