@@ -213,15 +213,22 @@ export default function Home() {
       {appState === "story" && storyData && (
         <div className={`${styles.storyContainer} glass-panel animate-fade-in`}>
           <h2 className={styles.storyTitle}>{storyData.title}</h2>
-          <p className={styles.catchphrase}>{storyData.catchphrase}</p>
+          <p className={styles.catchphrase}>
+            {storyData.catchphrase.split(/\\n|\n/).map((line, idx) => (
+              <span key={idx}>
+                {line}
+                <br />
+              </span>
+            ))}
+          </p>
           
           <h3 className={styles.sectionTitle}>あらすじ</h3>
-          {storyData.synopsis.split('\\n').map((paragraph, idx) => (
+          {storyData.synopsis.split(/\\n|\n/).map((paragraph, idx) => (
             <p key={`synopsis-${idx}`} className={styles.storyParagraph}>{paragraph}</p>
           ))}
 
           <h3 className={styles.sectionTitle}>物語のテーマ</h3>
-          {storyData.theme.split('\\n').map((paragraph, idx) => (
+          {storyData.theme.split(/\\n|\n/).map((paragraph, idx) => (
             <p key={`theme-${idx}`} className={styles.storyParagraph}>{paragraph}</p>
           ))}
 
@@ -230,18 +237,22 @@ export default function Home() {
             {storyData.characters.map((char, idx) => (
               <div key={idx} className={styles.characterItem}>
                 <div className={styles.characterName}>{char.name}</div>
-                <div className={styles.characterDesc}>{char.desc}</div>
+                <div className={styles.characterDesc}>
+                  {char.desc.split(/\\n|\n/).map((line, i) => (
+                    <span key={i}>{line}<br /></span>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
 
           <h3 className={styles.sectionTitle}>クライマックス</h3>
-          {storyData.climax.split('\\n').map((paragraph, idx) => (
+          {storyData.climax.split(/\\n|\n/).map((paragraph, idx) => (
             <p key={`climax-${idx}`} className={styles.storyParagraph}>{paragraph}</p>
           ))}
 
           <h3 className={styles.sectionTitle}>ラストシーン</h3>
-          {storyData.ending.split('\\n').map((paragraph, idx) => (
+          {storyData.ending.split(/\\n|\n/).map((paragraph, idx) => (
             <p key={`ending-${idx}`} className={styles.storyParagraph}>{paragraph}</p>
           ))}
 
