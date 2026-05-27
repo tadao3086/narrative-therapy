@@ -1,11 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
-  basePath: '/narrative-therapy',
-  images: {
-    unoptimized: true,
-  },
+  // Vercelが自動で最適化してくれます
 };
 
 export default nextConfig;
