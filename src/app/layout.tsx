@@ -18,14 +18,6 @@ export const metadata: Metadata = {
     url: "https://narrative-therapy-app.vercel.app",
     siteName: "Shadow Tale",
     type: "website",
-    images: [
-      {
-        url: "https://narrative-therapy-app.vercel.app/og.png",
-        width: 1731,
-        height: 909,
-        alt: "Shadow Tale",
-      }
-    ],
   }
 };
 
