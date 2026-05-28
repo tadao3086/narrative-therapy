@@ -9,8 +9,16 @@ const shippori = Shippori_Mincho({
 });
 
 export const metadata: Metadata = {
-  title: "Shadow Tale | 心象童話メーカー",
-  description: "あなたの心の奥にある傷や恐れを投影し、価値観が反転した世界で小さな一歩を踏み出す童話を生成します。",
+  metadataBase: new URL("https://narrative-therapy-app.vercel.app"),
+  title: "Shadow Tale",
+  description: "弱さを許容する、あなただけの影の童話",
+  openGraph: {
+    title: "Shadow Tale",
+    description: "弱さを許容する、あなただけの影の童話",
+    url: "https://narrative-therapy-app.vercel.app",
+    siteName: "Shadow Tale",
+    type: "website",
+  }
 };
 
 export default function RootLayout({
