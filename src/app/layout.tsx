@@ -9,7 +9,6 @@ const shippori = Shippori_Mincho({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://narrative-therapy-app.vercel.app"),
   title: "Shadow Tale",
   description: "弱さを許容する、あなただけの影の童話",
   openGraph: {
