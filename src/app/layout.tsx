@@ -18,6 +18,13 @@ export const metadata: Metadata = {
     url: "https://narrative-therapy-app.vercel.app",
     siteName: "Shadow Tale",
     type: "website",
+    images: ["/ogp.jpeg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shadow Tale",
+    description: "弱さを許容する、あなただけの影の童話",
+    images: ["/ogp.jpeg"],
   }
 };
 
